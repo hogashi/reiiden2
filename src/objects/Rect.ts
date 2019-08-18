@@ -1,4 +1,4 @@
-import BaseObject, { Props as BaseProps } from './BaseObject';
+import Base, { Props as BaseProps } from './Base';
 
 interface Params {
   x: number;
@@ -10,7 +10,7 @@ interface Params {
 
 interface Props extends BaseProps, Params {}
 
-export default class Rect extends BaseObject {
+export default class Rect extends Base {
   private params: Params;
 
   constructor(props: Props) {

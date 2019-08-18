@@ -3,13 +3,13 @@
 
 import Canvas from './Canvas';
 import Rect from './objects/Rect';
-import BaseObject from './objects/BaseObject';
+import Base from './objects/Base';
 
 const FPS = 60.0;
 let timer: number;
 
 function main({ canvas }: { canvas: Canvas }) {
-  const objects: BaseObject[] = [];
+  const objects: Base[] = [];
 
   let x = 10;
   let y = 20;
