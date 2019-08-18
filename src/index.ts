@@ -1,5 +1,5 @@
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
+// import 'core-js/stable';
+// import 'regenerator-runtime/runtime';
 
 import Canvas from './Canvas';
 import Rect from './objects/Rect';
@@ -20,18 +20,15 @@ function main({ canvas }: { canvas: Canvas }) {
 
   timer = setInterval(() => {
     const date = new Date();
-    const newWidth =
-      width *
-      0.025 *
-      (Math.floor(date.getSeconds() * 1000 + date.getMilliseconds() / 100) %
-        40);
-    const newHeight =
+    const newWidth = Math.floor(width * 0.001 * date.getMilliseconds());
+    const newHeight = Math.floor(
       height *
-      0.015 *
-      (Math.floor(
-        600 - (date.getSeconds() * 1000 + date.getMilliseconds()) / 100
-      ) %
-        77);
+        0.006 *
+        Math.abs(
+          160 -
+            (date.getMilliseconds() / 10 + (5 - (date.getSeconds() % 5)) * 20)
+        )
+    );
     console.log(newWidth, newHeight);
     player.setParams({ width: newWidth, height: newHeight });
     canvas.clear();
