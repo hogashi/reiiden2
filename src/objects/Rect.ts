@@ -34,6 +34,24 @@ export default class Rect extends Base {
     return { ...this.params };
   }
 
+  public move({ x, y }: { x: number; y: number }) {
+    let newX = x;
+    if (x < 0) {
+      newX = 0;
+    } else if (x > this.canvas.size.width - this.params.width) {
+      newX = this.canvas.size.width - this.params.width;
+    }
+
+    let newY = y;
+    if (y < 0) {
+      newY = 0;
+    } else if (y > this.canvas.size.height - this.params.height) {
+      newY = this.canvas.size.height - this.params.height;
+    }
+
+    this.setParams({ x: newX, y: newY });
+  }
+
   render() {
     this.ctx.fillStyle = this.params.style;
     this.ctx.fillRect(

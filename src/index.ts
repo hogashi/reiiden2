@@ -11,38 +11,50 @@ let timer: number;
 function main({ canvas }: { canvas: Canvas }) {
   const objects: Base[] = [];
 
-  let x = 10;
-  let y = 20;
-  const width = canvas.size.width / 2;
-  const height = canvas.size.height / 2;
+  const width = 10;
+  const height = 10;
+  let x = canvas.size.width / 2;
+  let y = canvas.size.height - height;
   const style = 'blue';
   const player = new Rect({ canvas, x, y, width, height, style });
   objects.push(player);
 
-  let signX = 1;
-  let signY = 1;
+  // const pressedArrow: { [key: string]: boolean } = {
+  //   ArrowUp: false,
+  //   ArrowRight: false,
+  //   ArrowDown: false,
+  //   ArrowLeft: false,
+  // };
+  const moveByArrow: { [key: string]: [boolean, number[]] } = {
+    ArrowUp: [false, [0, -1]],
+    ArrowRight: [false, [1, 0]],
+    ArrowDown: [false, [0, 1]],
+    ArrowLeft: [false, [-1, 0]],
+  };
+  document.addEventListener('keydown', e => {
+    console.log('down', e.key);
+    if (moveByArrow[e.key] !== undefined) {
+      moveByArrow[e.key][0] = true;
+    }
+  });
+  document.addEventListener('keyup', e => {
+    if (moveByArrow[e.key] !== undefined) {
+      moveByArrow[e.key][0] = false;
+    }
+  });
 
   timer = setInterval(() => {
-    const date = new Date();
-    x += Math.floor(0.01 * date.getMilliseconds()) * signX;
-    y +=
-      Math.floor(
-        0.06 *
-          Math.abs(
-            160 -
-              (date.getMilliseconds() / 10 + (5 - (date.getSeconds() % 5)) * 20)
-          )
-      ) * signY;
-    signX =
-      x > canvas.size.width - player.getParams().width ? -1 : x < 0 ? 1 : signX;
-    signY =
-      y > canvas.size.height - player.getParams().height
-        ? -1
-        : y < 0
-        ? 1
-        : signY;
-    console.log(x, y);
-    player.setParams({ x, y });
+    const m = Object.values(moveByArrow).reduce(
+      (sum, cur) => {
+        const c = cur[0] ? cur[1] : [0, 0];
+        return [sum[0] + c[0], sum[1] + c[1]];
+      },
+      [0, 0]
+    );
+    const params = player.getParams();
+    x = params.x + m[0] * 3;
+    y = params.y + m[1] * 3;
+    player.move({ x, y });
     canvas.clear();
     objects.forEach(object => {
       object.render();
