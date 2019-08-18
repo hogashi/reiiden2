@@ -6,7 +6,8 @@
   "author": "hogashi <azuma.ginkakuji@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "lint": "eslint src/**/*"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
