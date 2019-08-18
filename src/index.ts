@@ -15,7 +15,8 @@ function main({ canvas }: { canvas: Canvas }) {
   const y = 20;
   const width = canvas.size.width / 2;
   const height = canvas.size.height / 2;
-  const player = new Rect({ canvas, x, y, width, height });
+  const style = 'blue';
+  const player = new Rect({ canvas, x, y, width, height, style });
   objects.push(player);
 
   timer = setInterval(() => {

@@ -5,6 +5,7 @@ interface Params {
   y: number;
   width: number;
   height: number;
+  style: string | CanvasGradient | CanvasPattern;
 }
 
 interface Props extends BaseProps, Params {}
@@ -15,8 +16,8 @@ export default class Rect extends BaseObject {
   constructor(props: Props) {
     super(props);
 
-    const { x, y, width, height } = props;
-    this.params = { x, y, width, height };
+    const { x, y, width, height, style } = props;
+    this.params = { x, y, width, height, style };
   }
 
   public setParams(params: {
@@ -24,6 +25,7 @@ export default class Rect extends BaseObject {
     y?: number;
     width?: number;
     height?: number;
+    style?: string | CanvasGradient | CanvasPattern;
   }) {
     Object.assign(this.params, { ...params });
   }
@@ -33,6 +35,7 @@ export default class Rect extends BaseObject {
   }
 
   render() {
+    this.ctx.fillStyle = this.params.style;
     this.ctx.fillRect(
       this.params.x,
       this.params.y,
