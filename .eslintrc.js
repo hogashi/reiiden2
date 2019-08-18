@@ -28,7 +28,7 @@ module.exports = {
     // },
     "ecmaVersion": 2019,
     "sourceType": "module",
-    "project": "./tsconfig.json",
+    "projects": "./tsconfig.json",
   },
   "plugins": [
     // "react",
