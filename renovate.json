@@ -1,4 +1,5 @@
 {
   "extends": ["config:base"],
+  "labels": "renovate",
   "prHourlyLimit": 10
 }
