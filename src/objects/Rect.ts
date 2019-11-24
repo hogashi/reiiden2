@@ -1,6 +1,6 @@
 import Base, { Props as BaseProps } from './Base';
 
-interface Params {
+export interface Params {
   x: number;
   y: number;
   width: number;
@@ -8,10 +8,10 @@ interface Params {
   style: string | CanvasGradient | CanvasPattern;
 }
 
-interface Props extends BaseProps, Params {}
+export interface Props extends BaseProps, Params {}
 
 export default class Rect extends Base {
-  private params: Params;
+  protected params: Params;
 
   constructor(props: Props) {
     super(props);
