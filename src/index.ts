@@ -2,7 +2,7 @@
 // import 'regenerator-runtime/runtime';
 
 import Canvas from './Canvas';
-import BaseObject from './objects/BaseObject';
+import Base from './objects/Base';
 import Player from './objects/Player';
 
 const FPS = 58;
@@ -11,7 +11,7 @@ let renderTimer: number;
 let fpsTimer: number;
 
 function main({ canvas }: { canvas: Canvas }) {
-  const objects: BaseObject[] = [];
+  const objects: Base[] = [];
 
   const margin = 3;
   const width = 20;

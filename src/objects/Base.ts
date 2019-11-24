@@ -4,7 +4,7 @@ export interface Props {
   canvas: Canvas;
 }
 
-export default class BaseObject {
+export default class Base {
   public canvas: Canvas;
   public ctx: Canvas['ctx'];
 

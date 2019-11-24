@@ -6,7 +6,7 @@
   "author": "hogashi <azuma.ginkakuji@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
     "lint": "run-s eslint tsc",
     "eslint": "eslint 'src/**/*.ts'",
     "tsc": "tsc --noEmit"
