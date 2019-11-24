@@ -7,7 +7,7 @@ import Player from './objects/Player';
 
 const FPS = 58;
 let fpsCounter = 0;
-let timer: number;
+let renderTimer: number;
 let fpsTimer: number;
 
 function main({ canvas }: { canvas: Canvas }) {
@@ -22,7 +22,7 @@ function main({ canvas }: { canvas: Canvas }) {
   const player = new Player({ canvas, x, y, width, height, margin, style });
   objects.push(player);
 
-  timer = setInterval(() => {
+  renderTimer = setInterval(() => {
     fpsCounter += 1;
 
     canvas.clear();
@@ -58,9 +58,7 @@ init();
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
-    clearInterval(timer);
-  }
-  if (e.key === 'Escape') {
+    clearInterval(renderTimer);
     clearInterval(fpsTimer);
   }
 });
