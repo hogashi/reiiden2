@@ -5,8 +5,10 @@ import Canvas from './Canvas';
 import Rect from './objects/Rect';
 import BaseObject from './objects/BaseObject';
 
-const FPS = 60.0;
+const FPS = 58;
+let fpsCounter = 0;
 let timer: number;
+let fpsTimer: number;
 
 function main({ canvas }: { canvas: Canvas }) {
   const objects: BaseObject[] = [];
@@ -43,11 +45,19 @@ function main({ canvas }: { canvas: Canvas }) {
         : signY;
     console.log(x, y);
     player.setParams({ x, y });
+    fpsCounter += 1;
+
     canvas.clear();
     objects.forEach(object => {
       object.render();
     });
   }, 1000.0 / FPS);
+
+  fpsTimer = setInterval(() => {
+    const fps = fpsCounter;
+    console.log(`FPS: ${fps}`);
+    fpsCounter = 0;
+  }, 1000);
 }
 
 function init() {
@@ -71,5 +81,8 @@ init();
 document.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
     clearInterval(timer);
+  }
+  if (e.key === 'Escape') {
+    clearInterval(fpsTimer);
   }
 });
