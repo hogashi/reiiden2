@@ -5,9 +5,11 @@ export interface Props {
 }
 
 export default class BaseObject {
+  public canvas: Canvas;
   public ctx: Canvas['ctx'];
 
   constructor(props: Props) {
+    this.canvas = props.canvas;
     this.ctx = props.canvas.ctx;
   }
 
