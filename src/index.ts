@@ -2,8 +2,8 @@
 // import 'regenerator-runtime/runtime';
 
 import Canvas from './Canvas';
-import Rect from './objects/Rect';
 import BaseObject from './objects/BaseObject';
+import Player from './objects/Player';
 
 const FPS = 58;
 let fpsCounter = 0;
@@ -13,38 +13,16 @@ let fpsTimer: number;
 function main({ canvas }: { canvas: Canvas }) {
   const objects: BaseObject[] = [];
 
-  let x = 10;
-  let y = 20;
-  const width = canvas.size.width / 2;
-  const height = canvas.size.height / 2;
-  const style = 'blue';
-  const player = new Rect({ canvas, x, y, width, height, style });
+  const margin = 3;
+  const width = 20;
+  const height = 20;
+  const x = (canvas.size.width - width) / 2;
+  const y = canvas.size.height - height - margin;
+  const style = 'red';
+  const player = new Player({ canvas, x, y, width, height, margin, style });
   objects.push(player);
 
-  let signX = 1;
-  let signY = 1;
-
   timer = setInterval(() => {
-    const date = new Date();
-    x += Math.floor(0.01 * date.getMilliseconds()) * signX;
-    y +=
-      Math.floor(
-        0.06 *
-          Math.abs(
-            160 -
-              (date.getMilliseconds() / 10 + (5 - (date.getSeconds() % 5)) * 20)
-          )
-      ) * signY;
-    signX =
-      x > canvas.size.width - player.getParams().width ? -1 : x < 0 ? 1 : signX;
-    signY =
-      y > canvas.size.height - player.getParams().height
-        ? -1
-        : y < 0
-        ? 1
-        : signY;
-    console.log(x, y);
-    player.setParams({ x, y });
     fpsCounter += 1;
 
     canvas.clear();
