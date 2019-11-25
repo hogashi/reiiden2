@@ -46,7 +46,7 @@ export default class Player extends Rect {
     });
   }
 
-  private move(diff: number) {
+  private moveXByDiff(diff: number) {
     let x = this.params.x + diff;
     const leftLimit = this.params.margin;
     const rightLimit =
@@ -58,11 +58,11 @@ export default class Player extends Rect {
       x = rightLimit;
     }
 
-    this.params.x = x;
+    this.setParams({ x });
   }
 
   render() {
-    this.move(this.diff);
+    this.moveXByDiff(this.diff);
 
     this.ctx.fillStyle = this.params.style;
     this.ctx.fillRect(
