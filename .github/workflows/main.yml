@@ -6,9 +6,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      BUILD_DIR: "dist/"
-
     steps:
       - uses: actions/checkout@v1
       - name: Setup Node.js for use with actions
