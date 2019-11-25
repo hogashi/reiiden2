@@ -4,6 +4,7 @@
 import Canvas from './Canvas';
 import Base from './objects/Base';
 import Player from './objects/Player';
+import Circle from './objects/Circle';
 
 const FPS = 58;
 let fpsCounter = 0;
@@ -14,13 +15,27 @@ function main({ canvas }: { canvas: Canvas }) {
   const objects: Base[] = [];
 
   const margin = 3;
-  const width = 20;
-  const height = 20;
-  const x = (canvas.size.width - width) / 2;
-  const y = canvas.size.height - height - margin;
-  const style = 'red';
-  const player = new Player({ canvas, x, y, width, height, margin, style });
-  objects.push(player);
+  const playerSize = 20;
+  const circleRadius = 40;
+
+  objects.push(
+    new Player({
+      canvas,
+      x: (canvas.size.width - playerSize) / 2,
+      y: canvas.size.height - playerSize - margin,
+      width: playerSize,
+      height: playerSize,
+      margin,
+      style: 'red',
+    }),
+    new Circle({
+      canvas,
+      x: (canvas.size.width - circleRadius) / 2,
+      y: (canvas.size.height - circleRadius) / 2,
+      radius: circleRadius,
+      style: 'blue',
+    })
+  );
 
   renderTimer = setInterval(() => {
     fpsCounter += 1;
