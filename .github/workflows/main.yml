@@ -12,5 +12,5 @@ jobs:
       - name: build
         run: yarn install && yarn run build
 
-      - name: GitHub Pages Deploy
-        uses: maxheld83/ghpages@v0.2.1
+      - name: deploy
+        run: yarn deploy
