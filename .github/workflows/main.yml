@@ -1,13 +1,16 @@
-name: CI
+name: deploy
 
 on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: GitHub Pages Deploy
-      uses: maxheld83/ghpages@v0.2.1
+      - uses: actions/checkout@v1
+
+      - name: build
+        run: yarn install && yarn run build
+
+      - name: GitHub Pages Deploy
+        uses: maxheld83/ghpages@v0.2.1
