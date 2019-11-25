@@ -6,8 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      BUILD_DIR: "dist/"
+
     steps:
       - uses: actions/checkout@v1
+      - name: Setup Node.js for use with actions
+        uses: actions/setup-node@v1.1.0
 
       - name: build
         run: yarn install && yarn run build
