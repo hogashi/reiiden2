@@ -1,22 +1,20 @@
 module.exports = {
-  entry: "./src/index.ts",
+  entry: './src/index.ts',
   output: {
-    filename: "[name].bundle.js",
-    path: __dirname + "/dist/"
+    filename: '[name].bundle.js',
+    path: __dirname + '/dist/js/',
   },
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
 
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          { loader: "babel-loader" },
-        ],
+        use: [{ loader: 'babel-loader' }],
         exclude: /node_modules/,
       },
     ],
