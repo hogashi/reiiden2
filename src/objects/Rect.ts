@@ -20,13 +20,7 @@ export default class Rect extends Base {
     this.params = { x, y, width, height, style };
   }
 
-  public setParams(params: {
-    x?: number;
-    y?: number;
-    width?: number;
-    height?: number;
-    style?: string | CanvasGradient | CanvasPattern;
-  }) {
+  public setParams(params: Partial<Params>) {
     Object.assign(this.params, { ...params });
   }
 

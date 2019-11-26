@@ -46,6 +46,10 @@ export default class Player extends Rect {
     });
   }
 
+  public setParams(params: Partial<Params>) {
+    Object.assign(this.params, { ...params });
+  }
+
   private moveXByDiff(diff: number) {
     let x = this.params.x + diff;
     const leftLimit = this.params.margin;
