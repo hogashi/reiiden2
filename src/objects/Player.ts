@@ -71,7 +71,7 @@ export default class Player extends Rect {
     this.ctx.fillStyle = this.params.style;
     this.ctx.fillRect(
       this.params.x,
-      this.params.y,
+      this.canvas.size.height - this.params.y,
       this.params.width,
       this.params.height
     );

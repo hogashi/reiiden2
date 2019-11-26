@@ -22,7 +22,7 @@ function main({ canvas }: { canvas: Canvas }) {
     new Player({
       canvas,
       x: (canvas.size.width - playerSize) / 2,
-      y: canvas.size.height - playerSize - margin,
+      y: playerSize + margin,
       width: playerSize,
       height: playerSize,
       margin,
