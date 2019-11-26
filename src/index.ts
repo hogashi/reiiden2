@@ -4,7 +4,7 @@
 import Canvas from './Canvas';
 import Base from './objects/Base';
 import Player from './objects/Player';
-import Circle from './objects/Circle';
+import Onmyo from './objects/Onmyo';
 
 const FPS = 58;
 let fpsCounter = 0;
@@ -16,7 +16,7 @@ function main({ canvas }: { canvas: Canvas }) {
 
   const margin = 3;
   const playerSize = 20;
-  const circleRadius = 40;
+  const circleRadius = 20;
 
   objects.push(
     new Player({
@@ -28,11 +28,12 @@ function main({ canvas }: { canvas: Canvas }) {
       margin,
       style: 'red',
     }),
-    new Circle({
+    new Onmyo({
       canvas,
       x: (canvas.size.width - circleRadius) / 2,
       y: (canvas.size.height - circleRadius) / 2,
       radius: circleRadius,
+      margin,
       style: 'blue',
     })
   );
