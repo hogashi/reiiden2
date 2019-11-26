@@ -2,6 +2,6 @@
 
 WIP
 
-game practice
+html/js canvas game practice
 
 - deployed to https://hogashi.github.io/reiiden2/
