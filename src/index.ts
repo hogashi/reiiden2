@@ -5,6 +5,7 @@ import Canvas from './Canvas';
 import Base from './objects/Base';
 import Player from './objects/Player';
 import Onmyo from './objects/Onmyo';
+import Masu from './objects/Masu';
 
 const FPS = 58;
 let fpsCounter = 0;
@@ -15,10 +16,19 @@ function main({ canvas }: { canvas: Canvas }) {
   const objects: Base[] = [];
 
   const margin = 3;
+  const masuSize = 40;
   const playerSize = 20;
   const circleRadius = 20;
 
   objects.push(
+    new Masu({
+      canvas,
+      x: (canvas.size.width - masuSize) / 2,
+      y: (canvas.size.height - masuSize) / 2,
+      width: masuSize,
+      height: masuSize,
+      style: 'green',
+    }),
     new Player({
       canvas,
       x: (canvas.size.width - playerSize) / 2,
