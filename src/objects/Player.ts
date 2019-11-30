@@ -65,7 +65,7 @@ export default class Player extends Rect {
     this.setParams({ x });
   }
 
-  render() {
+  public render() {
     this.moveXByDiff(this.diff);
 
     this.ctx.fillStyle = this.params.style;

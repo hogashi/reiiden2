@@ -51,7 +51,7 @@ export default class Circle extends Base {
     this.move({ x, y });
   }
 
-  render() {
+  public render() {
     this.moveRandom();
 
     this.ctx.beginPath();

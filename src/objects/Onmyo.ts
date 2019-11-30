@@ -76,7 +76,7 @@ export default class Onmyo extends Circle {
     this.updateVelocity();
   }
 
-  render() {
+  public render() {
     this.moveByVelocity();
 
     this.ctx.beginPath();

@@ -46,7 +46,7 @@ export default class Rect extends Base {
     this.setParams({ x: newX, y: newY });
   }
 
-  render() {
+  public render() {
     this.ctx.fillStyle = this.params.style;
     this.ctx.fillRect(
       this.params.x,

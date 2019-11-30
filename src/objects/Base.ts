@@ -13,7 +13,7 @@ export default class Base {
     this.ctx = props.canvas.ctx;
   }
 
-  render() {
+  public render() {
     throw 'IMPLEMENT ME';
   }
 }
