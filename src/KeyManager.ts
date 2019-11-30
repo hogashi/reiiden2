@@ -1,22 +1,38 @@
+export interface KeyPressedInfo {
+  isPressed: boolean;
+  time: number;
+}
+
 export default class KeyManager {
-  private isKeyPressedSet: { [key: string]: boolean | undefined };
+  private keyPressedInfo: {
+    [keyName: string]: KeyPressedInfo | undefined;
+  };
 
   constructor() {
-    this.isKeyPressedSet = {};
+    this.keyPressedInfo = {};
 
     document.addEventListener('keydown', e => {
-      this.isKeyPressedSet[e.key] = true;
+      this.keyPressedInfo[e.key] = {
+        isPressed: true,
+        time: Date.now(),
+      };
     });
     document.addEventListener('keyup', e => {
-      this.isKeyPressedSet[e.key] = false;
+      this.keyPressedInfo[e.key] = {
+        isPressed: false,
+        time: 0,
+      };
     });
   }
 
-  public isKeyPressed(key: string): boolean {
-    const isPressed = this.isKeyPressedSet[key];
-    if (isPressed === undefined) {
-      return false;
+  public getKeyPressedInfo(key: string): KeyPressedInfo {
+    let info = this.keyPressedInfo[key];
+    if (info === undefined) {
+      info = {
+        isPressed: false,
+        time: 0,
+      };
     }
-    return isPressed;
+    return info;
   }
 }
