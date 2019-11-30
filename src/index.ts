@@ -1,6 +1,7 @@
 // import 'core-js/stable';
 // import 'regenerator-runtime/runtime';
 
+import KeyManager from './KeyManager';
 import Canvas from './Canvas';
 import Base from './objects/Base';
 import Player from './objects/Player';
@@ -14,6 +15,8 @@ let fpsTimer: number;
 
 function main({ canvas }: { canvas: Canvas }) {
   const objects: Base[] = [];
+
+  const keyManager = new KeyManager();
 
   const margin = 3;
   const masuSize = 40;
@@ -31,6 +34,7 @@ function main({ canvas }: { canvas: Canvas }) {
     }),
     new Player({
       canvas,
+      keyManager,
       x: (canvas.size.width - playerSize) / 2,
       y: playerSize + margin,
       width: playerSize,
@@ -51,6 +55,7 @@ function main({ canvas }: { canvas: Canvas }) {
   renderTimer = setInterval(() => {
     fpsCounter += 1;
 
+    // render
     canvas.clear();
     objects.forEach(object => {
       object.render();
