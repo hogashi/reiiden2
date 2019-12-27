@@ -3,5 +3,9 @@
   "labels": ["renovate"],
   "masterIssueApproval": true,
   "prHourlyLimit": 10,
-  "automerge": true
+  "packageRules": [
+    {
+      "automerge": true
+    }
+  ]
 }
